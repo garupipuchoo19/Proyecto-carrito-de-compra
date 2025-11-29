@@ -1,0 +1,24 @@
+<h2>Productos disponibles</h2>
+
+<section class="productos">
+    <% productos.forEach(prod => { %>
+        <div class="prod">
+
+            <img src="<%= prod.imagen %>" alt="<%= prod.nombre %>">
+
+
+            <h3><%= prod.nombre %></h3>
+
+            <p class="precio">$ <%= prod.precio %></p>
+
+            <% if (user) { %>
+                <form action="/carrito/agregar/<%= prod.id %>" method="POST">
+                    <button type="submit">Agregar al carrito</button>
+                </form>
+            <% } else { %>
+                <p class="login-text">Inicia sesión para comprar</p>
+            <% } %>
+
+        </div>
+    <% }) %>
+</section>

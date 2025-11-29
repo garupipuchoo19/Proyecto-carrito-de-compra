@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><%= titulo || "Carrito" %></title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🛒 Carrito de Compras</h1>
+
+    <nav class="menu">
+        <a href="/">Productos</a>
+
+        <% if (user) { %>
+            <a href="/carrito">Mi Carrito</a>
+            <a href="/historial">Historial</a>
+            <a href="/logout">Salir</a>
+        <% } else { %>
+            <a href="/login">Iniciar Sesión</a>
+            <a href="/registro">Registrarse</a>
+        <% } %>
+    </nav>
+</header>
+
+<main>
+    <%- body %>
+</main>
+
+<script src="/js/carrito.js"></script>
+
+</body>
+</html>

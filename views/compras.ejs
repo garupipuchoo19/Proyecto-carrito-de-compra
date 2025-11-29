@@ -1,0 +1,19 @@
+<h2>Historial de Compras</h2>
+
+<table class="tabla">
+    <tr>
+        <th>ID</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Ticket</th>
+    </tr>
+
+    <% compras.forEach(c => { %>
+        <tr>
+            <td><%= c.id %></td>
+            <td>$ <%= c.total %></td>
+            <td><%= c.fecha %></td>
+            <td><a href="/ticket/<%= c.id %>" target="_blank">Ver Ticket</a></td>
+        </tr>
+    <% }) %>
+</table>
