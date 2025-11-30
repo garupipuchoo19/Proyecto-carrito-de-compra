@@ -1,24 +1,41 @@
 <h2>Productos disponibles</h2>
 
 <section class="productos">
-    <% productos.forEach(prod => { %>
-        <div class="prod">
 
-            <img src="<%= prod.imagen %>" alt="<%= prod.nombre %>">
+    <% if (productos && productos.length > 0) { %>
 
+        <% productos.forEach(prod => { %>
 
-            <h3><%= prod.nombre %></h3>
+            <div class="prod">
 
-            <p class="precio">$ <%= prod.precio %></p>
+                <!-- Imagen del producto -->
+                <img src="<%= prod.imagen %>" alt="<%= prod.nombre %>">
 
-            <% if (user) { %>
-                <form action="/carrito/agregar/<%= prod.id %>" method="POST">
-                    <button type="submit">Agregar al carrito</button>
-                </form>
-            <% } else { %>
-                <p class="login-text">Inicia sesión para comprar</p>
-            <% } %>
+                <!-- Nombre -->
+                <h3><%= prod.nombre %></h3>
 
-        </div>
-    <% }) %>
+                <!-- Precio -->
+                <p class="precio">$ <%= prod.precio %></p>
+
+                <!-- Mostrar botón o mensaje según login -->
+                <% if (user) { %>
+                    <form action="/carrito/agregar/<%= prod.id %>" method="POST">
+                        <button type="submit">Agregar al carrito</button>
+                    </form>
+                <% } else { %>
+                    <p class="login-text">Inicia sesión para comprar</p>
+                <% } %>
+
+            </div>
+
+        <% }) %>
+
+    <% } else { %>
+
+        <p style="padding: 20px; font-size: 18px;">
+            No hay productos disponibles por el momento.
+        </p>
+
+    <% } %>
+
 </section>

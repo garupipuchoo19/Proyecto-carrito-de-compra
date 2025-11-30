@@ -6,6 +6,7 @@ const db = mysql.createConnection({
     password: "3G98hbmtN8",
     database: "sql5809821",
     port: 3306
+    // ❌ IMPORTANTE: quitamos el SSL porque FreeSQL NO lo soporta.
 });
 
 db.connect(err => {
