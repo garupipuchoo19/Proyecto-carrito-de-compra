@@ -23,13 +23,13 @@ app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "layout");
 
-// Rutas
+// ⚠️ EL ORDEN CORRECTO DE LAS RUTAS
+app.use("/", require("./routes/productos"));   // Página principal
 app.use("/", require("./routes/auth"));
-app.use("/", require("./routes/productos"));
 app.use("/", require("./routes/carrito"));
 app.use("/", require("./routes/compras"));
 
-// PORT para Railway
+// Puerto para Railway
 const PORT = process.env.PORT || 3000;
 
 // Iniciar servidor

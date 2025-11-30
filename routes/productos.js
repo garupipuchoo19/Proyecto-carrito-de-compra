@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/productosController");
 
-// Ruta corregida
-router.get("/", controller.listar);
+// Página principal de productos
+router.get("/", controller.listaProductos);
 
 module.exports = router;
