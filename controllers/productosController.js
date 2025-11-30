@@ -1,19 +1,12 @@
-const db = require("../config/db");
-
-exports.listar = (req, res) => {
+exports.listaProductos = (req, res) => {
     db.query("SELECT * FROM productos", (err, results) => {
-
         if (err) {
-            console.error("Error obteniendo productos:", err);
-            return res.render("index", { 
-                productos: [], 
-                user: req.session.user || null 
-            });
+            console.error("❌ Error SQL:", err);
+            return res.render("index", { productos: [] });
         }
 
-        res.render("index", { 
-            productos: results,
-            user: req.session.user || null
-        });
+        console.log("📦 Productos recibidos:", results);
+
+        res.render("index", { productos: results, user: req.session.user });
     });
 };
