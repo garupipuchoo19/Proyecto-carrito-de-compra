@@ -5,14 +5,15 @@ exports.listar = (req, res) => {
 
         if (err) {
             console.error("Error obteniendo productos:", err);
-            return res.render("index", { productos: [] }); // evitar crash
+            return res.render("index", { 
+                productos: [], 
+                user: req.session.user || null 
+            });
         }
 
-        // Si no hay productos, enviamos un arreglo vacío
-        if (!results || results.length === 0) {
-            return res.render("index", { productos: [] });
-        }
-
-        res.render("index", { productos: results });
+        res.render("index", { 
+            productos: results,
+            user: req.session.user || null
+        });
     });
 };

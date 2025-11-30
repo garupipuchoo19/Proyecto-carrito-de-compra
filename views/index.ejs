@@ -2,22 +2,20 @@
 
 <section class="productos">
 
-    <% if (productos && productos.length > 0) { %>
+    <% let lista = productos || []; %>
 
-        <% productos.forEach(prod => { %>
+    <% if (lista.length > 0) { %>
+
+        <% lista.forEach(prod => { %>
 
             <div class="prod">
 
-                <!-- Imagen del producto -->
                 <img src="<%= prod.imagen %>" alt="<%= prod.nombre %>">
 
-                <!-- Nombre -->
                 <h3><%= prod.nombre %></h3>
 
-                <!-- Precio -->
                 <p class="precio">$ <%= prod.precio %></p>
 
-                <!-- Mostrar botón o mensaje según login -->
                 <% if (user) { %>
                     <form action="/carrito/agregar/<%= prod.id %>" method="POST">
                         <button type="submit">Agregar al carrito</button>
