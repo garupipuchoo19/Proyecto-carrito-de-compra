@@ -1,20 +1,19 @@
 const mysql = require("mysql2");
 
 const db = mysql.createConnection({
-    host: "sql5.freesqldatabase.com",
-    user: "sql5809821",
-    password: "3G98hbmtN8",
-    database: "sql5809821",
-    port: 3306
-    // ❌ IMPORTANTE: quitamos el SSL porque FreeSQL NO lo soporta.
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 });
 
-db.connect(err => {
+db.connect((err) => {
     if (err) {
-        console.error("❌ Error al conectar a FreeSQLDatabase:", err);
+        console.error("❌ Error conectando a MySQL Railway:", err);
         return;
     }
-    console.log("✅ Conectado a FreeSQLDatabase!");
+    console.log("✅ Conectado a Railway MySQL!");
 });
 
 module.exports = db;
